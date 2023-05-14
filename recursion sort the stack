@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/sort-a-stack/1?page=1&category[]=Recursion&sortBy=accuracy
+
+#include<bits/stdc++.h>
+void insert(stack<int> &s, int a){
+    if(s.empty()||s.top()<=a){
+        s.push(a);
+       return;
+    }else{
+        int b=s.top();
+        s.pop();
+        insert(s,a);
+        insert(s,b);
+    }
+}
+void SortedStack :: sort()
+{
+   //Your code here
+   if(s.empty()){
+       return;
+   }
+   int a=s.top();
+   this->s.pop();
+   this->sort();
+   insert(s , a);
+}
