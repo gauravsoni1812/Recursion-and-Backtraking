@@ -1,0 +1,48 @@
+class Solution{
+    public:
+    //Function to sort an array using quick sort algorithm.
+  
+    void quickSort(int input[], int si,int ei)
+{ if(si==ei || si>ei){
+    return;
+}
+  int d=partition(input,si,ei);
+   quickSort(input,si,d-1);
+   quickSort(input,d+1,ei);
+}
+    
+    public:
+    int partition(int a[],int si,int ei)
+{
+    int f=0;
+    int c=0;
+    for(int i=si;i<=ei;i++)
+    {
+        if(a[si]>a[i])
+        {
+            c++;
+        }
+    }
+    int temp=a[si];
+    a[si]=a[si+c];
+    a[si+c]=temp;
+    int i=si,j=ei;
+    while(i<j)
+    {
+        if(a[i]<a[si+c])
+        {
+            i++;
+        }
+        else if(a[j]>=a[si+c])
+        {
+            j--;
+        }
+        else{
+            int t=a[i];
+            a[i]=a[j];
+            a[j]=t;
+        }
+    } 
+   // return c;
+}
+};
