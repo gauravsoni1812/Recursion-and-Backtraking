@@ -1,0 +1,16 @@
+TOWER OF HANOI 
+https://practice.geeksforgeeks.org/problems/tower-of-hanoi-1587115621/1?page=1&category[]=Recursion&sortBy=submissions
+   long long toh(int N, int from, int to, int aux) {
+    // Your code here
+    if(N==0){
+        return 0;
+    }
+    long long a = toh(N-1, from, aux, to);
+    cout<<"move disk "<<N <<" from rod "<<from<<" to rod "<<to<<endl;
+    long long b = toh(N-1, aux, to, from);
+    return a+1+b;
+   
+   
+  first of all take N-1 discs from source to auxillary 
+  then move Nth string from source to destination
+  then move all the strings from auxillary to destination
