@@ -1,4 +1,5 @@
 // in this problem you need to remove all the adjacent occurances of the string 
+https://practice.geeksforgeeks.org/problems/recursively-remove-all-adjacent-duplicates0744/1?page=1&category[]=Recursion&sortBy=submissions
 string helper(string s)
     {
         string ans = "";
