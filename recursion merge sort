@@ -1,0 +1,40 @@
+https://practice.geeksforgeeks.org/problems/merge-sort/1
+
+ void merge(int arr[], int l, int m, int r)
+{
+    int n1=m-l+1;
+    int n2=r-m;
+    int a[n1];
+    int b[n2];
+    for(int i=0;i<n1;i++){
+        a[i]=arr[l+i];
+    }
+    for(int i=0;i<n2;i++){
+        b[i]=arr[m+1+i];            
+    }
+    int i=0, j=0;
+    int n3=l;
+    while( i<n1 && j<n2 ){
+        if(a[i]>b[j]){
+            arr[n3++]=b[j++];
+        }else{
+            arr[n3++]=a[i++];
+        }
+    }
+    while(i<n1){
+        arr[n3++]=a[i++];
+    }
+    while(j<n2){
+        arr[n3++]=b[j++];
+    }
+}
+
+void mergeSort(int arr[], int l, int r)
+{
+    if(l < r){
+        int mid=(l+r)/2;
+        mergeSort(arr,l,mid);
+        mergeSort(arr,mid+1,r);
+        merge(arr,l,mid,r);
+    }
+}
