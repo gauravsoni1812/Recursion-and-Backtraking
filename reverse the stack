@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/reverse-a-stack/1?page=1&category[]=Recursion&sortBy=accuracy\
+
+  void insert(stack<int> &St, int a)
+    {
+        if (St.empty())
+        {
+            St.push(a);
+            return;
+        }
+        int b = St.top();
+        St.pop();
+        insert(St,a);
+        St.push(b);
+    }
+    void Reverse(stack<int> &St)
+    {
+        if (St.empty())
+        {
+            return;
+        }
+        int a = St.top();
+        St.pop();
+        Reverse(St);
+        insert(St, a);
+    }
