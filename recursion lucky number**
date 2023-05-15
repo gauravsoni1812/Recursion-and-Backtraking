@@ -1,0 +1,14 @@
+https://practice.geeksforgeeks.org/problems/lucky-numbers2911/1?page=1&category[]=Recursion&sortBy=submissions
+
+     bool isLucky(int n, int position){
+          if(position>n){
+               return true;
+          }
+          if(n%position==0){
+              return false;
+          }
+          return isLucky(n-n/position , position+1);
+     }
+    bool isLucky(int n) {
+        return isLucky(n, 2);
+    }
