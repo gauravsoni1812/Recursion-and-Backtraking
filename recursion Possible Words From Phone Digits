@@ -1,0 +1,40 @@
+https://practice.geeksforgeeks.org/problems/possible-words-from-phone-digits-1587115620/1
+
+ #include <bits/stdc++.h>
+vector<string> possibleWords(int a[], int N, vector<string> phone)
+{
+    // Your code here
+    if (N == 0)
+    {
+        vector<string> ans;
+        ans.push_back("");
+        return ans;
+    }
+
+    vector<string> output;
+    vector<string> ans = possibleWords(a + 1, N - 1);
+    string num = phone[a[0]];
+    for (int i = 0; i < num.size(); i++)
+    {
+        for (int j = 0; j < ans.size(); j++)
+        {
+            output.push_back(num[i] + ans[j]);
+        }
+    }
+    return output;
+}
+vector<string> possibleWords(int a[], int N)
+{
+    vector<string> phone;
+    phone.push_back("");
+    phone.push_back("");
+    phone.push_back("abc");
+    phone.push_back("def");
+    phone.push_back("ghi");
+    phone.push_back("jkl");
+    phone.push_back("mno");
+    phone.push_back("pqrs");
+    phone.push_back("tuv");
+    phone.push_back("wxyz");
+    return possibleWords(a, N, phone);
+}
