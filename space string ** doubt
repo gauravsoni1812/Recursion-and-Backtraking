@@ -1,0 +1,34 @@
+space permutations on string 
+https://practice.geeksforgeeks.org/problems/print-all-possible-strings/1?page=1&category[]=Recursion&sortBy=difficulty
+
+
+vector<string> spaceString(char* str)
+{
+    if (str[1] == '\0')
+    {
+        vector<string> ans;
+        string s = "";
+        s += str[0];
+        ans.push_back(s);
+        return ans;
+    }
+    string s="";
+    for(int i=0;str[i]!='\0';i++){
+         s+=str[i];
+    }
+
+    vector<string> ans = spaceString(str + 1);
+    vector<string> finalans;
+
+    // char firstChar = str[0];
+    for (int i = 0; i < ans.size(); i++)
+    {
+        string a = s.substr(0,1) + ans[i];
+        finalans.push_back(a);
+
+        string b = s.substr(0,1) + " " + ans[i];
+        finalans.push_back(b);
+    }
+   sort(finalans.rbegin(), finalans.rend());
+    return finalans;
+}
