@@ -1,0 +1,83 @@
+https://practice.geeksforgeeks.org/problems/combination-sum-ii-1664263832/1?page=2&category[]=Recursion&sortBy=difficulty
+
+https://practice.geeksforgeeks.org/problems/combination-sum-iii/1?page=2&category[]=Recursion&sortBy=difficulty
+
+Combination Sum III
+void helper(int index, int target, vector<int>& arr, vector<int>& ds, vector<vector<int>>& ans) {
+    if (target == 0) {
+        ans.push_back(ds);
+        return;
+    }
+   
+    //pickup element
+    for(int i=index;i<arr.size();i++){
+       if(i>index&&arr[i]==arr[i-1]){
+            continue;
+       }
+       if(arr[i]>target){
+            break;
+       }
+       
+        ds.push_back(arr[i]);
+        helper(i + 1, target - arr[i], arr, ds, ans);
+        ds.pop_back();
+    }
+}
+
+vector<vector<int>> CombinationSum2(vector<int> arr, int n, int k) {
+    sort(arr.begin(), arr.end());
+    // arr.erase(unique(arr.begin(), arr.end()), arr.end());
+    vector<int> ds;
+    vector<vector<int>> ans;
+    helper(0, k, arr, ds, ans);
+    return ans;
+}
+
+combination sum III
+
+void helper(int index, int target, vector<int> &arr, vector<int> &ds, vector<vector<int>> &ans, int k)
+{
+    if (target == 0 && ds.size() == k)
+    {
+        ans.push_back(ds);
+        return;
+    }
+
+    // pickup element
+    for (int i = index; i < arr.size(); i++)
+    {
+        if (i > index && arr[i] == arr[i - 1])
+        {
+            continue;
+        }
+        if (arr[i] > target)
+        {
+            break;
+        }
+
+        ds.push_back(arr[i]);
+        helper(i + 1, target - arr[i], arr, ds, ans,k);
+        ds.pop_back();
+    }
+}
+
+vector<vector<int>> CombinationSum2(vector<int> arr, int n, int num, int k)
+{
+    sort(arr.begin(), arr.end());
+    // arr.erase(unique(arr.begin(), arr.end()), arr.end());
+    vector<int> ds;
+    vector<vector<int>> ans;
+    helper(0, k, arr, ds, ans, num);
+    return ans;
+}
+
+vector<vector<int>> combinationSum(int K, int N)
+{
+    // code here
+    vector<int> arr;
+    for (int i = 0; i < 9; i++)
+    {
+        arr.push_back(i + 1);
+    }
+    return CombinationSum2(arr, 9, K, N);
+}
