@@ -1,0 +1,44 @@
+https://practice.geeksforgeeks.org/problems/find-all-possible-palindromic-partitions-of-a-string/0?category%5B%5D=Dynamic%20Programming&category%5B%5D=Dynamic%20Programming&difficulty%5B%5D=2&page=1&query=category%5B%5DDynamic%20Programmingdifficulty%5B%5D2page1category%5B%5DDynamic%20Programming
+
+https://youtu.be/wvaYrOp94k0
+
+   void solve(string &s, int start, int n, vector<vector<string>> &ans, vector<string> &temp)
+{
+    if (start == n)
+    {
+        ans.push_back(temp);
+        return;
+    }
+
+    for (int i = start; i < n; i++)
+    {
+
+        // check for palindrome
+        int l = start;
+        int h = i;
+        bool flag = 1;
+        while (l < h)
+        {
+            if (s[l] != s[h])
+            {
+                flag = 0;
+                break;
+            }
+            l++, h--;
+        }
+        if (flag)
+        {
+            temp.push_back(s.substr(start, i - start + 1));
+            solve(s, i + 1, n ,ans, temp);
+            temp.pop_back();
+        }
+    }
+}
+vector<vector<string>> allPalindromicPerms(string s)
+{
+    // code here
+    vector<vector<string>> ans;
+    vector<string> temp;
+    solve(s, 0, s.size(), ans, temp);
+    return ans;
+}
